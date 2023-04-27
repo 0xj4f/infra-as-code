@@ -7,3 +7,4 @@
 
 ## Other Repos
 - Terraform: https://github.com/codeandrew/terraform
+- Jenkins Shared Library: https://github.com/codeandrew/jenkins-shared-library
