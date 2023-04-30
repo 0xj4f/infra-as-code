@@ -24,7 +24,7 @@ Once logged in, you'll see a JSON output with a list of your available subscript
   {
     "cloudName": "AzureCloud",
     "homeTenantId": "xxxxxxxxxx-xxxxxxxxxx-xxxxxxxxxx-xxxxxxxxxx-xxxxxxxxxx",
-    "id": "xxxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
+    "id": "xxxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx", 
     "isDefault": true,
     "managedByTenants": [],
     "name": "Azure subscription 1",
@@ -50,4 +50,20 @@ Once logged in, you'll see a JSON output with a list of your available subscript
     }
   }
 ]
+```
+
+Set the active subscription to "Azure Subscription 1" by running the following command (replace <subscription_id> with the actual subscription ID you found in step 3):
+
+```bash
+az account set --subscription <subscription_id>
+az account set --subscription xxxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx
+```
+
+Now, all subsequent Azure CLI commands will use "Azure Subscription 1" as the active subscription.
+
+To verify that the correct subscription is active, you can run:
+
+```bash
+az account show
+# json will validate your account
 ```
