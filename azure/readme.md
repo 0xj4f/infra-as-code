@@ -67,3 +67,7 @@ To verify that the correct subscription is active, you can run:
 az account show
 # json will validate your account
 ```
+
+## References
+https://learn.microsoft.com/en-us/cli/azure/
+
