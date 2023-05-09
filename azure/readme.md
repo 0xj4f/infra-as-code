@@ -79,6 +79,22 @@ Delete Resource Group
 az group delete -n $rg
 ```
 
+script that deletes all resources group
+```bash
+#!/bin/bash
+
+# Get the list of resource group names
+resource_groups=$(az group list --query "[].name" -o tsv)
+
+# Loop through the resource groups and delete each one
+for rg in $resource_groups; do
+  echo "Deleting resource group: $rg"
+  az group delete --name $rg --yes --no-wait
+done
+
+echo "All resource groups have been queued for deletion."
+
+```
 
 ## References
 https://learn.microsoft.com/en-us/cli/azure/
