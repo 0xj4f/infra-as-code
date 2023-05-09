@@ -67,6 +67,18 @@ To verify that the correct subscription is active, you can run:
 az account show
 # json will validate your account
 ```
+## Resource Groups
+
+List all Resource Group
+```
+az group list --output table
+```
+
+Delete Resource Group
+```
+az group delete -n $rg
+```
+
 
 ## References
 https://learn.microsoft.com/en-us/cli/azure/
