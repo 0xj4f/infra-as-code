@@ -3,6 +3,23 @@
 
 ## AWSCLI
 
+### ACCOUNT SETUP
+```
+aws configure
+```
+This will prompt you to enter the following details:
+
+- AWS Access Key ID
+- AWS Secret Access Key
+- Default region name
+- Default output format
+Enter the appropriate values for each field.
+
+Verify
+```
+aws sts get-caller-identity
+```
+
 ### GET
 **GET ALL USERS**
 ```bash
