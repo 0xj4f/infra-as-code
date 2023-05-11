@@ -48,6 +48,11 @@ aws s3 ls --profile account1
 aws ec2 describe-instances --profile account2
 ```
 
+To set default profile add this to you env 
+```
+export AWS_DEFAULT_PROFILE=profile_name
+```
+
 
 
 ### GET
