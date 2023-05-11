@@ -2,6 +2,16 @@
 > infra-as-code of aws, using awscli and cloud formation
 
 ## AWSCLI
+Installer
+```
+curl "https://awscli.amazonaws.com/AWSCLIV2.pkg" -o "AWSCLIV2.pkg"
+sudo installer -pkg AWSCLIV2.pkg -target /
+```
+verify
+```
+which aws
+aws --version
+```
 
 ### ACCOUNT SETUP
 ```
