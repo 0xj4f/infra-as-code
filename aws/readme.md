@@ -29,6 +29,26 @@ Verify
 ```
 aws sts get-caller-identity
 ```
+### IAM AWS
+You can configure multiple profiles in the AWS CLI configuration file (`~/.aws/config`).
+```yaml
+[profile account1]
+region = us-east-1
+aws_access_key_id = AKI****************
+aws_secret_access_key = jx*********************
+
+[profile account2]
+region = us-west-2
+aws_access_key_id = AKI****************
+aws_secret_access_key = jx*********************
+```
+When you run AWS CLI commands, specify the profile using the `--profile`
+```bash
+aws s3 ls --profile account1
+aws ec2 describe-instances --profile account2
+```
+
+
 
 ### GET
 **GET ALL USERS**
