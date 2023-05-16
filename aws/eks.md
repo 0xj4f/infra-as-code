@@ -43,7 +43,7 @@ eks admin
 }
 ```
 eks user
-```
+```json
 {
 "Effect":"Allow"
 "Action": [
