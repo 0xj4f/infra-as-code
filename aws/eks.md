@@ -45,17 +45,17 @@ eks admin
 eks user
 ```json
 {
-"Effect":"Allow"
-"Action": [
-    "eks:DescribeNodegroup".
-    "eks: ListNodegroups"
-    "eks: DescribeCluster"
-    "eks: ListClusters"
-    "eks: AccessKubernetesApi"
-    "ssm:GetParameter"
-    "eks: ListUpdates"
-    "eks:ListFargateProfiles"
-],
-"Resource": "*"
+    "Effect":"Allow"
+    "Action": [
+        "eks:DescribeNodegroup",
+        "eks: ListNodegroups",
+        "eks: DescribeCluster",
+        "eks: ListClusters",
+        "eks: AccessKubernetesApi",
+        "ssm:GetParameter",
+        "eks: ListUpdates",
+        "eks:ListFargateProfiles"
+    ],
+    "Resource": "*"
 }
 ```
