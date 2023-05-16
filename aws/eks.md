@@ -42,3 +42,20 @@ eks admin
     ]
 }
 ```
+eks user
+```
+{
+"Effect":"Allow"
+"Action": [
+    "eks:DescribeNodegroup".
+    "eks: ListNodegroups"
+    "eks: DescribeCluster"
+    "eks: ListClusters"
+    "eks: AccessKubernetesApi"
+    "ssm:GetParameter"
+    "eks: ListUpdates"
+    "eks:ListFargateProfiles"
+],
+"Resource": "*"
+}
+```
