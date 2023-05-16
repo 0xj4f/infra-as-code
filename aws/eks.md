@@ -69,3 +69,6 @@ echo 'export PATH=$HOME/bin:$PATH' >> ~/.bashrc
 aws-iam-authenticator help
 ```
 
+
+## References:
+- https://betterprogramming.pub/kubernetes-authentication-in-aws-eks-using-iam-authenticator-de3a586e885c
