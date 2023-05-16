@@ -4,7 +4,6 @@ verify your aws account first
 ```
 aws sts get-caller-identity   
 ```
-
 list the available clusters
 ```
 aws eks list-clusters 
@@ -13,4 +12,16 @@ aws eks list-clusters
 describe the cluster you want
 ```
 aws eks describe-cluster --name clusterName --region us-east-2     
+```
+save config 
+```
+aws eks update-kubeconfig --region us-east-2 --name clusterName
+#or  
+aws eks get-token --region us-east-2 --cluster-name clusterName
+
+```
+
+verify
+```
+kubectl config view
 ```
