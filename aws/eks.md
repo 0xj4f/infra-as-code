@@ -60,6 +60,27 @@ eks user
 }
 ```
 
+## EKS Config map
+By default only EKS creators can access the EKS cluster you need to manually input the AWS user in the EKS configmap
+```
+kubectl get configmap aws-auth -n kube-system -o yaml > aws-auth-new.yaml
+```
+
+in the mapUser add your userarn and username there
+```yaml
+...
+  mapUsers: |
+    - userarn: arn:aws:iam::xxxxxxxxx:user/andrewf
+      username: andrewf
+      groups:
+        - system:masters
+...
+```
+once you've add the users
+```
+kubectl apply -f aws-auth-new.yaml
+```
+
 ## AWS Authenticator
 ```
 curl -o aws-iam-authenticator https://amazon-eks.s3-us-west-2.amazonaws.com/1.14.6/2019-08-22/bin/linux/amd64/aws-iam-authenticator
