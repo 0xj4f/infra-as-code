@@ -70,3 +70,70 @@ Tokens:              <none>
 Events:              <none>
 ```
 
+
+
+## Install load balancer using helm
+
+```
+helm version
+version.BuildInfo{Version:"v3.11.0", GitCommit:"472c5736ab01133de504a826bd9ee12cbe4e7904", GitTreeState:"clean", GoVersion:"go1.19.5"}
+```
+
+> get region code here: https://docs.aws.amazon.com/eks/latest/userguide/add-ons-images.html  
+> us-east-2	602401143452.dkr.ecr.us-east-2.amazonaws.com
+
+
+helm repo add eks https://aws.github.io/eks-charts
+helm repo update
+
+```
+## Template
+helm install aws-load-balancer-controller eks/aws-load-balancer-controller \
+  -n kube-system \
+  --set clusterName=<cluster-name> \
+  --set serviceAccount.create=false \
+  --set serviceAccount.name=aws-load-balancer-controller \
+  --set region=<region-code> \
+  --set vpcId=<vpc-xxxxxxxx> \
+  --set image.repository=<account>.dkr.ecr.<region-code>.amazonaws.com/amazon/aws-load-balancer-controller
+```
+
+response 
+```
+NAME: aws-load-balancer-controller
+LAST DEPLOYED: Wed May 17 15:32:41 2023
+NAMESPACE: kube-system
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+NOTES:
+AWS Load Balancer controller installed!
+```
+
+verify in kubectl
+```
+kubectl -n kube-system describe deployment aws-load-balancer-controller
+Name:                   aws-load-balancer-controller
+Namespace:              kube-system
+CreationTimestamp:      Wed, 17 May 2023 15:32:49 +0800
+Labels:                 app.kubernetes.io/instance=aws-load-balancer-controller
+                        app.kubernetes.io/managed-by=Helm
+                        app.kubernetes.io/name=aws-load-balancer-controller
+                        app.kubernetes.io/version=v2.5.1
+                        helm.sh/chart=aws-load-balancer-controller-1.5.2
+Annotations:            deployment.kubernetes.io/revision: 1
+                        meta.helm.sh/release-name: aws-load-balancer-controller
+                        meta.helm.sh/release-namespace: kube-system
+Selector:               app.kubernetes.io/instance=aws-load-balancer-controller,app.kubernetes.io/
+...
+```
+
+verify in pods
+```
+╰─$ k -n kube-system get pods            
+NAME                                            READY   STATUS    RESTARTS   AGE
+aws-load-balancer-controller-7c8887dc4f-74llm   1/1     Running   0          11m
+aws-load-balancer-controller-7c8887dc4f-cbz6n   1/1     Running   0          11m
+```
+
+
