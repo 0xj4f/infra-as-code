@@ -46,10 +46,27 @@ response
 2023-05-17 15:15:33 [ℹ]  created serviceaccount "kube-system/aws-load-balancer-controller"
 ```
 
-verify
+verify in eksctl
 ```
 ╰─$ eksctl get iamserviceaccount --cluster=eks-clustername
 NAMESPACE       NAME                            ROLE ARN
 kube-system     aws-load-balancer-controller    arn:aws:iam::11111111:role/eksctl-thetoast-io-addon-iamserviceaccount-k-Role1-11111111
+```
+
+verify in kubectl
+```
+kubectl get sa aws-load-balancer-controller -n kube-system
+kubectl describe sa aws-load-balancer-controller -n kube-system
+```
+response
+```
+Name:                aws-load-balancer-controller
+Namespace:           kube-system
+Labels:              app.kubernetes.io/managed-by=eksctl
+Annotations:         eks.amazonaws.com/role-arn: arn:aws:iam::11111111:role/eksctl-thetoast-io-addon-iamserviceaccount-k-Role1-11111111
+Image pull secrets:  <none>
+Mountable secrets:   <none>
+Tokens:              <none>
+Events:              <none>
 ```
 
