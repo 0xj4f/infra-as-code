@@ -20,3 +20,36 @@ to fetch the policy
 ```bash
 aws iam list-policies --query "Policies[?PolicyName=='AWSLoadBalancerControllerIAMPolicy']"
 ```
+
+## Create IAM role for AWS LoadBalancer Controller
+
+template
+```
+eksctl create iamserviceaccount \
+  --cluster=my_cluster \
+  --namespace=kube-system \
+  --name=aws-load-balancer-controller \ #Note:  K8S Service Account Name that need to be bound to newly created IAM Role
+  --attach-policy-arn=arn:aws:iam::111122223333:policy/AWSLoadBalancerControllerIAMPolicy \
+  --override-existing-serviceaccounts \
+  --approve
+```
+response
+```
+2023-05-17 15:14:59 [ℹ]  1 task: { 
+    2 sequential sub-tasks: { 
+        create IAM role for serviceaccount "kube-system/aws-load-balancer-controller",
+        create serviceaccount "kube-system/aws-load-balancer-controller",
+    } }2023-05-17 15:14:59 [ℹ]  building iamserviceaccount stack "eksctl-thetoast-io-addon-iamserviceaccount-kube-system-aws-load-balancer-controller"
+2023-05-17 15:14:59 [ℹ]  deploying stack "eksctl-thetoast-io-addon-iamserviceaccount-kube-system-aws-load-balancer-controller"
+2023-05-17 15:15:00 [ℹ]  waiting for CloudFormation stack "eksctl-thetoast-io-addon-iamserviceaccount-kube-system-aws-load-balancer-controller"
+2023-05-17 15:15:31 [ℹ]  waiting for CloudFormation stack "eksctl-thetoast-io-addon-iamserviceaccount-kube-system-aws-load-balancer-controller"
+2023-05-17 15:15:33 [ℹ]  created serviceaccount "kube-system/aws-load-balancer-controller"
+```
+
+verify
+```
+╰─$ eksctl get iamserviceaccount --cluster=eks-clustername
+NAMESPACE       NAME                            ROLE ARN
+kube-system     aws-load-balancer-controller    arn:aws:iam::11111111:role/eksctl-thetoast-io-addon-iamserviceaccount-k-Role1-11111111
+```
+
