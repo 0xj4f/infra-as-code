@@ -1,23 +1,27 @@
 #!/bin/bash
 
-# Define the namespace
-NAMESPACE="$1"
-echo "Exporting at namespace: $NAMESPACE"
+# Get all namespaces
+namespaces=($(kubectl get namespaces -o jsonpath='{.items[*].metadata.name}'))
 
-# Create a directory to store the manifests
-EXPORT_DIR=$(date +%Y%m%d)
-mkdir -p "${EXPORT_DIR}"
-# Export all the manifests
-kubectl get all -n "${NAMESPACE}" -o yaml > "${EXPORT_DIR}/all.yaml"
-kubectl get configmap -n "${NAMESPACE}" -o yaml > "${EXPORT_DIR}/configmaps.yaml"
-kubectl get secret -n "${NAMESPACE}" -o yaml > "${EXPORT_DIR}/secrets.yaml"
-kubectl get ingress -n "${NAMESPACE}" -o yaml > "${EXPORT_DIR}/ingresses.yaml"
-kubectl get service -n "${NAMESPACE}" -o yaml > "${EXPORT_DIR}/services.yaml"
-kubectl get deployment -n "${NAMESPACE}" -o yaml > "${EXPORT_DIR}/deployments.yaml"
-kubectl get statefulset -n "${NAMESPACE}" -o yaml > "${EXPORT_DIR}/statefulsets.yaml"
-kubectl get daemonset -n "${NAMESPACE}" -o yaml > "${EXPORT_DIR}/daemonsets.yaml"
-kubectl get job -n "${NAMESPACE}" -o yaml > "${EXPORT_DIR}/jobs.yaml"
-kubectl get cronjob -n "${NAMESPACE}" -o yaml > "${EXPORT_DIR}/cronjobs.yaml"
+# Iterate over each namespace
+for namespace in "${namespaces[@]}"; do
+  echo "Exporting namespace: $namespace"
 
-# Print the export completion message
-echo "Kubernetes manifests exported to ${EXPORT_DIR}"
+  # Create a directory with the current date and namespace
+  export_dir=$(date +%Y%m%d)"-$namespace"
+  mkdir -p "$export_dir"
+
+  # Export all the manifests for the namespace
+  kubectl get all -n "$namespace" -o yaml > "$export_dir/all.yaml"
+  kubectl get configmap -n "$namespace" -o yaml > "$export_dir/configmaps.yaml"
+  kubectl get secret -n "$namespace" -o yaml > "$export_dir/secrets.yaml"
+  kubectl get ingress -n "$namespace" -o yaml > "$export_dir/ingresses.yaml"
+  kubectl get service -n "$namespace" -o yaml > "$export_dir/services.yaml"
+  kubectl get deployment -n "$namespace" -o yaml > "$export_dir/deployments.yaml"
+  kubectl get statefulset -n "$namespace" -o yaml > "$export_dir/statefulsets.yaml"
+  kubectl get daemonset -n "$namespace" -o yaml > "$export_dir/daemonsets.yaml"
+  kubectl get job -n "$namespace" -o yaml > "$export_dir/jobs.yaml"
+  kubectl get cronjob -n "$namespace" -o yaml > "$export_dir/cronjobs.yaml"
+
+  echo "Kubernetes manifests exported to $export_dir"
+done
