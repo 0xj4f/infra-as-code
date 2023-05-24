@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # Define the namespace
-NAMESPACE="your-namespace"
+NAMESPACE="$1"
+echo "Exporting at namespace: $NAMESPACE"
 
 # Create a directory to store the manifests
 EXPORT_DIR=$(date +%Y%m%d)
