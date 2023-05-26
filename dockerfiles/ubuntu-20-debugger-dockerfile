@@ -11,7 +11,9 @@ RUN apt-get update && \
     wget
 
 # Install Mongosh
-RUN wget -qO - https://downloads.mongodb.com/compass/mongosh-1.0.4-linux.tgz | tar -xzf - -C /usr/local/bin/ --strip-components=1
+RUN wget -qO mongosh.tgz https://downloads.mongodb.com/compass/mongosh-1.0.4-linux.tgz && \
+    tar -xzf mongosh.tgz -C /usr/local/bin --strip-components=1 && \
+    rm mongosh.tgz
 
 # Install MySQL client
 RUN apt-get install -y mysql-client
