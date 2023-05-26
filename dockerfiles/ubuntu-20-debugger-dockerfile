@@ -8,12 +8,15 @@ RUN apt-get update && \
     python3-pip \
     iputils-ping \
     curl \
-    wget
+    wget \
+    gnupg2
+
+# Install Node.js
+RUN curl -fsSL https://deb.nodesource.com/setup_14.x | bash - && \
+    apt-get install -y nodejs
 
 # Install Mongosh
-RUN wget -qO mongosh.tgz https://downloads.mongodb.com/compass/mongosh-1.0.4-linux.tgz && \
-    tar -xzf mongosh.tgz -C /usr/local/bin --strip-components=1 && \
-    rm mongosh.tgz
+RUN npm install -g mongosh@1.0.4
 
 # Install MySQL client
 RUN apt-get install -y mysql-client
