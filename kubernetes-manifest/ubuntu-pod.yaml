@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ubuntu-pod
+spec:
+  containers:
+    - name: ubuntu-container
+      image: ubuntu:latest
+      command: ["/bin/sleep", "infinity"]  # Keeps the container running
+      # ports:
+      #   - containerPort: 22  # SSH port
+      # volumeMounts:
+      #   - name: ssh-key
+      #     mountPath: /root/.ssh  # Mounts SSH keys
+      #   - name: python-script
+      #     mountPath: /app  # Mounts Python script
+      securityContext:
+        runAsUser: 0  # Run as root
+  # volumes:
+  #   - name: ssh-key
+  #     secret:
+  #       secretName: ssh-key-secret  # Provide your SSH key secret
+  #   - name: python-script
+  #     configMap:
+  #       name: python-script-configmap  # Provide your Python script ConfigMap
