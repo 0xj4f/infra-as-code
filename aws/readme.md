@@ -52,6 +52,7 @@ output:
 REGION=us-east-2
 #aws ecr describe-repositories --region $REGION --output table 
 aws ecr describe-repositories --output table --query 'repositories[*].[registryId, repositoryName, repositoryUri]' --region $REGION
+aws ecr describe-repositories --output table --query 'repositories[*].[repositoryUri]' --region $REGION
 ```
 
 
