@@ -67,6 +67,29 @@ To verify that the correct subscription is active, you can run:
 az account show
 # json will validate your account
 ```
+
+## IAM 
+
+check roles assignment list
+```
+# json
+az role assignment list --assignee $(az account show --query user.name -o tsv)
+
+# table 
+az role assignment list --assignee $(az account show --query user.name -o tsv) --output table
+```
+
+get all users in aad 
+```
+# json 
+az ad user list 
+
+# table 
+az ad user list --output table
+```
+
+
+
 ## Resource Groups
 
 List all Resource Group
