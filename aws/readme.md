@@ -2,6 +2,59 @@
 > infra-as-code of aws, using awscli and cloud formation
 
 ## AWSCLI
+Installer
+```
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
+```
+verify
+```
+which aws
+aws --version
+```
+
+### ACCOUNT SETUP
+```
+aws configure
+```
+This will prompt you to enter the following details:
+
+- AWS Access Key ID
+- AWS Secret Access Key
+- Default region name
+- Default output format
+Enter the appropriate values for each field.
+
+Verify
+```
+aws sts get-caller-identity
+```
+### IAM AWS
+You can configure multiple profiles in the AWS CLI configuration file (`~/.aws/config`).
+```yaml
+[profile account1]
+region = us-east-1
+aws_access_key_id = AKI****************
+aws_secret_access_key = jx*********************
+
+[profile account2]
+region = us-west-2
+aws_access_key_id = AKI****************
+aws_secret_access_key = jx*********************
+```
+When you run AWS CLI commands, specify the profile using the `--profile`
+```bash
+aws s3 ls --profile account1
+aws ec2 describe-instances --profile account2
+```
+
+To set default profile add this to you env 
+```
+export AWS_DEFAULT_PROFILE=profile_name
+```
+
+
 
 ### GET
 **GET ALL USERS**
