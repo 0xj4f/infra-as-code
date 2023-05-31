@@ -14,3 +14,15 @@ devices
 - managed devices 
 roles
 - defines permissions for AAD objects
+
+
+### AAD users
+Standard identity for a user.
+• Users can be internal or external
+• Internal: <alias>@<tenant».onmicrosoft.com
+.
+External: <alias>_<HomeTenant»#EXT#@<tenant».onmicrosoft.com
+•
+Example:
+Leron.Gray@stormspotter.onmicrosoft.com
+Leron.Gray_microsoft.com#EXT#@stormspotter.onmicrosoft.com
