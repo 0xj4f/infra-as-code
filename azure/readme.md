@@ -6,6 +6,11 @@
 - ARM templates
 - BICEPS
 ## Installations 
+**CLI**
+```bash
+curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+```
+
 
 **DOCKER**
 
