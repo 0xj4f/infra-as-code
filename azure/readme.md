@@ -5,6 +5,17 @@
 - powershell
 - ARM templates
 - BICEPS
+## Installations 
+
+**DOCKER**
+
+```
+docker run -it mcr.microsoft.com/azure-cli
+
+# If you want to pick up the SSH keys from your user environment, 
+# use -v ${HOME}/.ssh:/root/.ssh to mount your SSH keys in the environment.
+docker run -it -v ${HOME}/.ssh:/root/.ssh mcr.microsoft.com/azure-cli
+```
 
 ## Subscriptions
 
