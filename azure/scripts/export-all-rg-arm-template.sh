@@ -1,5 +1,14 @@
 #!/bin/bash
 
+# TESTED IN 
+# {
+#   "azure-cli": "2.49.0",
+#   "azure-cli-core": "2.49.0",
+#   "azure-cli-telemetry": "1.0.8",
+#   "extensions": {}
+# }
+
+
 datetime=$(date '+%Y-%m-%d-%H-%M')
 mkdir -p $datetime
 
