@@ -84,6 +84,11 @@ az account show
 # json will validate your account
 ```
 
+get all subscription
+```
+az account list --output table
+```
+
 ## IAM 
 
 check roles assignment list
