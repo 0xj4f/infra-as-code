@@ -8,6 +8,9 @@ echo "Make sure to be in root repo"
  storage_account_name="demodotnet6functionappstorage"
  app_service_plan_name="demo-dotnet6-asp"
 
+echo "[+] Zipping Function App"
+zip -r myfunctionapp.zip .
+
  az group create \
    --name $rg \
    --location $location
