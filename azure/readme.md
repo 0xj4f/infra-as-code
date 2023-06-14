@@ -5,6 +5,22 @@
 - powershell
 - ARM templates
 - BICEPS
+## Installations 
+**CLI**
+```bash
+curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+```
+
+
+**DOCKER**
+
+```
+docker run -it mcr.microsoft.com/azure-cli
+
+# If you want to pick up the SSH keys from your user environment, 
+# use -v ${HOME}/.ssh:/root/.ssh to mount your SSH keys in the environment.
+docker run -it -v ${HOME}/.ssh:/root/.ssh mcr.microsoft.com/azure-cli
+```
 
 access tokens saved in ~/.azure/accessTokens.json
 
@@ -68,6 +84,11 @@ To verify that the correct subscription is active, you can run:
 ```bash
 az account show
 # json will validate your account
+```
+
+get all subscription
+```
+az account list --output table
 ```
 
 ## IAM 
