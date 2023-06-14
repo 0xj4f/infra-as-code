@@ -6,6 +6,8 @@
 - ARM templates
 - BICEPS
 
+access tokens saved in ~/.azure/accessTokens.json
+
 ## Subscriptions
 
 Run the following command to log in to your Azure account:
