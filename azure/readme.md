@@ -114,6 +114,11 @@ az ad user list --output table
 
 ## Service Principals
 
+Required Permissions:
+- Azure Active Directory Global Administrator
+- Application administrator
+- Cloud application administrator
+
 
 If you've lost the secret, you will need to create a new one. 
 Here's how you can do that:
