@@ -112,7 +112,18 @@ az ad user list --output table
 ```
 
 
+## Service Principals
 
+
+If you've lost the secret, you will need to create a new one. 
+Here's how you can do that:
+```bash
+name=demo-sp
+az ad sp credential reset --name $name
+# or
+id=1231231232131
+az ad sp credential reset --id $id
+```
 ## Resource Groups
 
 List all Resource Group
