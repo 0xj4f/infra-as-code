@@ -153,6 +153,13 @@ echo "All resource groups have been queued for deletion."
 
 ```
 
+## Azure SDK or API
+```
+az login
+az account get-access-token | tee az-access-token.json
+```
+
 ## References
 https://learn.microsoft.com/en-us/cli/azure/
+
 
