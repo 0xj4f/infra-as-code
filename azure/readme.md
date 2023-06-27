@@ -119,6 +119,17 @@ Required Permissions:
 - Application administrator
 - Cloud application administrator
 
+Create AD application with Service Principal
+```
+appName="<<YourApplicationName>>"
+app=$(az ad app create --display-name $appName --query "{appId:appId}" --output tsv)
+# Obtain the Application ID (Client ID)
+appID=$(echo $app | cut -f1)
+echo "Application ID (Client ID): $appID"
+
+az ad sp create --id $appID | tee ad-service-principle.txt
+```
+
 
 If you've lost the secret, you will need to create a new one. 
 Here's how you can do that:
