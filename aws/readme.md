@@ -123,3 +123,7 @@ aws ecr get-login-password --region $REGION | docker login --username AWS --pass
 USER=admin@example.com
 aws iam attach-user-policy --policy-arn arn:aws:iam::aws:policy/AdministratorAccess --user-name $USER
 ```
+
+## Online Tools
+
+- https://cloud-images.ubuntu.com/locator/ec2/
