@@ -1,0 +1,19 @@
+projects:
+- name: project-a
+  credentials:
+    access_key: XXXXXXXXXXXXXXXXXXXX
+    secret_key: XXXXXXXXXXXXXXXXXXXX
+    region: us-east-2
+
+- name: project-b
+  credentials:
+    access_key: XXXXXXXXXXXXXXXXXXXX
+    secret_key: XXXXXXXXXXXXXXXXXXXX
+    region: us-east-2
+
+- name: project-c
+  credentials:
+    access_key: XXXXXXXXXXXXXXXXXXXX
+    secret_key: XXXXXXXXXXXXXXXXXXXX
+    region: ap-southeast-1
+
