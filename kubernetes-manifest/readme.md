@@ -1,5 +1,18 @@
 # Kubernetes
 
+## Cluster Management
+
+```
+# list all context
+kubectl config get-contexts
+
+# switch to context
+kubectl config use-context $CLUSTER_A
+
+# verify
+kubectl config current-context
+```
+
 ## Ubuntu Pod
 
 Here are some commands you can use with `kubectl` to debug and check network access:
