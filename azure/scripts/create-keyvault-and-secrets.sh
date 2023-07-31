@@ -26,4 +26,13 @@ az keyvault secret set \
 
 echo "Created Resource Group: $resource_group"
 echo "Created Key Vault: $keyvault_name"
-echo "Created Secret: $secret_name"
+#echo "Created Secret: $secret_name"
+
+vault_uri=$(az keyvault show \
+               --name $keyvault_name \
+               --resource-group $resource_group \
+               --query properties.vaultUri \
+               --output tsv)
+
+echo "Key Vault URI: $vault_uri"
+
