@@ -3,7 +3,7 @@
 # Assign variables
 resource_group="demo_rg"
 location="northeurope" # Replace with your preferred location
-keyvault_name="demo_project_keyvault"
+keyvault_name="demoprojectkeyvault" # only alpha numeric
 secret_name="demo_secret"
 secret_value="demo_value"
 
