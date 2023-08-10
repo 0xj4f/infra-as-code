@@ -10,11 +10,14 @@ public_ip_name="jaf-prod-pubip-demoapp"
 
 vm_name="jaf-prod-vm-demoapp-ne-001"
 vm_admin_user='jafadmin'
-vm_os=Ubuntu2204
 vm_os_disk_size=50
 vm_size=Standard_B2s
 ssh_key_path="$HOME/.ssh/id_rsa_jaf_vm"
 
+# az vm image list --all --offer ubuntu --output table
+# get URN 
+#vm_image=Ubuntu2204 # Standard 
+vm_image=Canonical:0001-com-ubuntu-minimal-jammy-daily:minimal-22_04-daily-lts-gen2:22.04.202308030 # minimal 
 
 
 set -x
@@ -31,7 +34,7 @@ az group create --name $resource_group \
 # Create Network Security Group
 az network nsg create --resource-group $resource_group \
                       --name $nsg_name
-
+sleep 5
 # Create NSG rules to allow traffic on port 22, 80, 443, 5000 and 5500
 for port in 22 80 443
 do
@@ -59,7 +62,7 @@ az network public-ip create --resource-group $resource_group \
 # Create VM
 az vm create --resource-group $resource_group \
              --name $vm_name \
-             --image $vm_os \
+             --image $vm_image \
              --admin-username $vm_admin_user \
              --ssh-key-value $ssh_key_path.pub \
              --public-ip-address $public_ip_name \
