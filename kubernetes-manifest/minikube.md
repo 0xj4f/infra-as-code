@@ -2,7 +2,7 @@
 
 ## Installation
 
-Linux AMD 64 
+**Linux AMD 64** 
 
 ```bash
 curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
